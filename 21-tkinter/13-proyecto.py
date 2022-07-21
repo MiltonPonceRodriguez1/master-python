@@ -67,7 +67,7 @@ ws.config(menu=nav)
 
 nav.add_command(label="Inicio", command=home)
 nav.add_command(label="Añadir", command=add)
-nav.add_command(label="Infor", command=info)
+nav.add_command(label="Información", command=info)
 nav.add_command(label="Salir", command=ws.quit)
 # FIN DEL MENU DE NAVEGACIÓN
 
