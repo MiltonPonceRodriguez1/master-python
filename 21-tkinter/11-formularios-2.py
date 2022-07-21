@@ -16,6 +16,10 @@ def showProfesion():
 def mark():
     marked.config(text=option.get(), bg="yellow")
 
+
+def markSelect():
+    selected.config(text=option_two.get())
+
 ws = Tk()
 ws.title("Formularios II")
 ws.geometry("800x500")
@@ -87,5 +91,17 @@ marked.grid(row=9)
 Label(ws, text="").grid(row=5)
 
 # Options Menu
+option_two = StringVar()
+option_two.set("Opcion 1")
+
+Label(ws, text="Selecciona una opción").grid(row=5, column=1)
+
+select = OptionMenu(ws, option_two, "Opcion 1", "Opcion 2", "Opcion 3")
+select.grid(row=6, column=1)
+
+Button(ws, text="Ver", command=markSelect).grid(row=7, column=1)
+
+selected = Label(ws)
+selected.grid(row=8, column=1)
 
 ws.mainloop()
