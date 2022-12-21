@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block title%} Página de Pruebas {% endblock %}
+
+{% block content %}
+<h1 class="title">Página de mi WEB</h1>
+<p>{{ "Creado por Milton Ponce ñññ"|cut:"ñ" }}</p>
+
+<p>{{texto|default:"No hay nada"}}</p>
+
+<p>{{ lista|first }}</p>    {% comment "" %} Obtener el primer Elemento de una lista {% endcomment %}
+<p>{{ lista|last }}</p>     {% comment "" %} Obtener el ultimo Elemento de una lista {% endcomment %}
+<p>{{ lista|join:"," }}</p> {% comment "" %} Obtener el primer Elemento de una lista {% endcomment %}
+<p>{{ lista|length }}</p>   {% comment "" %} Obtener longitud de una lista {% endcomment %}
+<p>{{ lista|random }}</p>   {% comment "" %} Obtener un elemento aleatorios de una lista {% endcomment %}
+
+<p>{{ "Texto De Prueba"|length }}</p>   {% comment "" %} Obtener el número de caracteres de un string {% endcomment %}
+<p>{{ "Texto De Prueba"|upper }}</p>    {% comment "" %} Transformar en mayusculas un string {% endcomment %}
+<p>{{ "Texto De Prueba"|lower }}</p>    {% comment "" %} Transformar en minusculas un string {% endcomment %}
+<p>{{ "<h1>Texto</h1> De <strong>Prueba</strong> hola <p>mundo</p>"|striptags|wordcount }}</p>    {% comment "" %} Transformar en minusculas un string {% endcomment %}
+
+<!-- CARGAR FILTROS PERSONALISADOS -->
+{% load filters %}
+
+{{ "Milton Ponce WEB"|saludo|safe }}
+{% endblock %}

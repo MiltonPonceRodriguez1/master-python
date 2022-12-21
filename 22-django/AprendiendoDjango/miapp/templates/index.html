@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+<!-- ESTO ES UN COMENTARIO DE HTML -->
+{% comment "NOTA DEL COMENTARIO DJANGO" %}
+    ESTO ES UN COMENTARIO DE DJANGO
+{% endcomment %}
+
+<h1 class="title">{{title}}</h1>
+<p>{{mi_variable}}</p>
+
+{% comment "IF" %} CONDICIONALES DJANGP {% endcomment %}
+{% if nombre and nombre == 'Milton Ponce' %}
+    <p>{{nombre}}</p>
+{% else %}
+    <strong>El Nombre No Existe o No Coincide</strong>
+{% endif %}
+
+<h3>Lenguajes de Programación</h3>
+<ul>
+    {% for lenguaje in lenguajes  %}
+        <li>{{forloop.counter}}. {{lenguaje}} - {{forloop.first}} - {{forloop.last}} - {{forloop.counter}} - {{forloop.counter0}} - {{forloop.revcounter}} - {{forloop.revcounter0}}</li>
+    {% empty %}
+        <p>NO HAY LENGUAJES QUE MOSTRAR</p>
+    {% endfor %}
+</ul>
+
+{% comment "RESTRINGIR VARIABLES" %}
+    AGREGANDO LA OPCIÓN ONLY DESPUES DEL WITH SE RESTRINGE LA HERENCIA DE VARIABLES ENTRE TEMPLATES
+    {% include 'fecha-actual.html' with saludo='Hola Mundo desde una Plantilla' only%}
+{% endcomment %}
+{% include 'fecha-actual.html' with saludo='Hola Mundo desde una Plantilla' %}
+
+{% endblock %}
