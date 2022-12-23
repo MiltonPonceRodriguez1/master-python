@@ -1,9 +1,15 @@
 {% extends 'layouts/layout.html' %}
 
-{% block title %}{{title}}{% endblock %}
+{% block title %}{{category.name}}{% endblock %}
 
 {% block content %}
-    <h1 class="title">{{title}}</h1>
+    <h1 class="title">{{category.name}}</h1>
 
-    {% include 'articles/articles.html' %}
+    <p>{{category.description}}</p>
+
+    {% comment "" %}
+        RELACION INVERSA MANY TO MANY MODELS
+        .articles. es el relative_name que se le  puso al Article en Models
+    {% endcomment %}
+    {% include 'articles/articles.html' with articles=category.articles.all %}
 {% endblock %}
