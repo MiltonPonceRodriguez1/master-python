@@ -5,7 +5,13 @@
 {% block content %}
     <h1 class="title">{{title}}</h1>
 
-    {{register_form.errors}}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-warning">
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
 
     <form method="POST" action="">
         {% csrf_token %}
