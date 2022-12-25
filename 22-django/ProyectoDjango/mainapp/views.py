@@ -1,4 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
+from mainapp.forms import RegisterForm
 
 # Create your views here.
 
@@ -10,4 +13,27 @@ def index(request):
 def about(request):
     return render(request, 'mainapp/about.html', {
         'title': 'Sobre nosostros'
+    })
+
+def register_page(request):
+    register_form = RegisterForm()
+
+    if request.method == 'POST':
+        register_form = RegisterForm(request.POST)
+
+        if register_form.is_valid():
+            register_form.save()
+            messages.success(request, 'Te has registrado correctamente!!')
+
+            return redirect('inicio')
+
+    return render(request, 'users/register.html', {
+        'title': 'Registro',
+        'register_form': register_form
+    })
+
+def login_page(request):
+
+    return render(request, 'users/login.html', {
+        'title': 'Identíficate'
     })
