@@ -43,9 +43,12 @@
                 </li>
                 {% for page in pages %}
                     <li>
-                        <a href="{% url 'page' slug=page.2%}">{{page.1}}</a>
+                        <a href="{% url 'page' slug=page.2 %}">{{page.1}}</a>
                     </li>
                 {% endfor %}
+                <li>
+                    <a href="{% url 'logout' %}">Cerrar sesión</a>
+                </li>
             {% else %}
                 <li>
                     <a href="{% url 'register' %}">Registro</a>
