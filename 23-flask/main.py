@@ -6,12 +6,20 @@ app = Flask(__name__)
 def index():
     return "Aprendiendo Flask con Milton Ponce"
 
-@app.route('/informacion/<string:nombre>/<int:apellidos>')
-def informacion(nombre, apellidos):
+# Rutas con parametros y parametros opcionales
+@app.route('/informacion')
+@app.route('/informacion/<string:nombre>')
+@app.route('/informacion/<string:nombre>/<apellidos>')
+def informacion(nombre = None, apellidos = None):
+    texto = ""
+
+    if nombre != None and apellidos != None:
+        texto = f"<h3>Bienvenido, {nombre} {apellidos}</h3>"
+
     return f"""
         <h1>Página de Información</h1>
         <p>Esta es la página de información</p>
-        <h3>Bienvenido, {nombre} {apellidos}</h3>
+        {texto}
     """
 
 @app.route('/contacto')
